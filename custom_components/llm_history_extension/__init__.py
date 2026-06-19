@@ -165,4 +165,39 @@ async def async_setup(hass: HomeAssistant, config: dict) -> bool:
 
     llm.AssistAPI._async_get_tools = custom_get_tools
 
+    # 3. Patch loader.FLOWS to handle comma-separated type_filter values safely
+    from homeassistant import loader
+    try:
+        from homeassistant.generated import config_flows
+    except ImportError:
+        config_flows = None
+
+    class CommaSeparatedDict(dict):
+        """Dict wrapper that supports comma-separated keys by unioning their values."""
+
+        def __getitem__(self, key):
+            if isinstance(key, str) and "," in key:
+                parts = [p.strip() for p in key.split(",")]
+                result = set()
+                for part in parts:
+                    if part in self:
+                        val = super().__getitem__(part)
+                        if isinstance(val, (set, list, tuple)):
+                            result.update(val)
+                return result
+            return super().__getitem__(key)
+
+        def get(self, key, default=None):
+            try:
+                return self[key]
+            except KeyError:
+                return default
+
+    if hasattr(loader, "FLOWS") and isinstance(loader.FLOWS, dict):
+        loader.FLOWS = CommaSeparatedDict(loader.FLOWS)
+
+    if config_flows is not None and hasattr(config_flows, "FLOWS") and isinstance(config_flows.FLOWS, dict):
+        config_flows.FLOWS = CommaSeparatedDict(config_flows.FLOWS)
+
     return True
+
