@@ -39,13 +39,26 @@ A Home Assistant custom integration that enhances the Large Language Model (LLM)
 
 ## Configuration & Setup
 
-Once installed, simply add the integration's domain to your `configuration.yaml` file so it loads automatically on startup:
+Once installed, you can set up the integration either through the Home Assistant user interface or via your `configuration.yaml` file.
+
+### Method 1: Via the User Interface (Recommended)
+
+1. Navigate to **Settings** -> **Devices & Services** in Home Assistant.
+2. Click **+ Add Integration** in the bottom right.
+3. Search for **LLM History & Entity ID Extension** and select it.
+4. Confirm the installation. No extra options are required!
+
+### Method 2: Via `configuration.yaml`
+
+Simply add the integration's domain to your `configuration.yaml` file:
 
 ```yaml
 llm_history_extension:
 ```
 
-After adding the line, restart Home Assistant. The integration will automatically run its setup, apply the patches to the Assist API in memory, and register the `GetHistory` tool. No UI configuration or pairing is required!
+After adding the configuration line, restart Home Assistant to load the integration.
+
+The integration will automatically run its setup, apply the patches to the Assist API in memory, and register the `GetHistory` tool.
 
 ---
 
