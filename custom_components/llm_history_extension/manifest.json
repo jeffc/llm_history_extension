@@ -2,7 +2,7 @@
   "domain": "llm_history_extension",
   "name": "LLM History & Entity ID Extension",
   "version": "1.0.0",
-  "documentation": "https://github.com/your/repo",
+  "documentation": "https://github.com/jeffc/llm_history_extension",
   "dependencies": [],
   "codeowners": ["@jeff"],
   "integration_type": "helper",
