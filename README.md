@@ -1,7 +1,6 @@
 # LLM History & Entity ID Extension
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
-[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badgelink.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=jeffc&repository=llm_history_extension&category=integration)
 
 A Home Assistant custom integration that enhances the Large Language Model (LLM) Assist API with dynamic state history queries and entity ID matching capabilities.
 
@@ -21,7 +20,7 @@ A Home Assistant custom integration that enhances the Large Language Model (LLM)
 
 1. Click the button below to add this repository directly to HACS:
    
-   [![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badgelink.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=jeffc&repository=llm_history_extension&category=integration)
+[![INSTALL WITH HACS ON](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=jeffc&repository=llm_history_extension&category=integration)
    
 2. Or go to **HACS** -> **Integrations**, click the three dots in the top right, select **Custom repositories**, and add:
    * **Repository**: `https://github.com/jeffc/llm_history_extension`
