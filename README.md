@@ -63,6 +63,6 @@ The integration will automatically run its setup, apply the patches to the Assis
 
 ## Technical Details
 
-This integration operates by hot-patching core LLM components/helpers at runtime based on the detected Home Assistant version:
-* **Pre-2026.8 (Legacy)**: Overrides `llm._get_exposed_entities` to inject `entity_id` values and intercepts `llm.AssistAPI._async_get_tools` to dynamically register the `GetHistory` tool.
-* **2026.8+ (Modern)**: Overrides `async_get_exposed_entities` in `homeassistant.components.homeassistant.llm` to inject `entity_id` values, and intercepts `async_get_api_instance` in `homeassistant.components.llm.AssistAPI` to dynamically register the `GetHistory` tool.
+This integration operates dynamically based on the detected Home Assistant version:
+* **Pre-2026.8 (Legacy)**: Overrides `llm._get_exposed_entities` in memory to inject `entity_id` values, and intercepts `llm.AssistAPI._async_get_tools` to dynamically register the `GetHistory` tool.
+* **2026.8+ (Modern)**: Overrides `async_get_exposed_entities` in `homeassistant.components.homeassistant.llm` to inject `entity_id` values. It registers the `GetHistory` tool natively using the official `llm` integration platform via [llm.py](file:///home/jeff/code/ai-generated-tools/llm_history_extension/custom_components/llm_history_extension/llm.py) (with a fallback memory patch on `AssistAPI.async_get_api_instance`).
