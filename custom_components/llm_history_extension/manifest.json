@@ -5,7 +5,7 @@
   "documentation": "https://github.com/jeffc/llm_history_extension",
   "dependencies": [],
   "after_dependencies": ["llm", "homeassistant"],
-  "codeowners": ["@jeff"],
+  "codeowners": ["@jeffc"],
   "integration_type": "helper",
   "iot_class": "local_push",
   "config_flow": true,
